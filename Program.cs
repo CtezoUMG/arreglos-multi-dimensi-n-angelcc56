@@ -19,7 +19,12 @@ for (int i = 0; i < n; i++)
 int maximo = numeros[0]; 
 
 // TODO: Implementar el algoritmo de búsqueda aquí
-
+// Recorremos el arreglo
+for (int i = 1; i < n; i++)
+{
+    // Usamos operador ternario
+    if (numeros[i] > maximo) maximo = numeros[i];
+}
 
 // --- FIN DE LÓGICA DEL ALUMNO ---
 

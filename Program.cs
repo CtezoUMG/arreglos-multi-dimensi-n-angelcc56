@@ -16,16 +16,26 @@ for (int i = 0; i < n; i++)
 
 // --- INICIO DE LÓGICA DEL ALUMNO ---
 // Instrucción: El alumno debe encontrar el valor máximo del arreglo 'numeros'
-int maximo = numeros[0]; 
+Span<int> span = numeros.AsSpan();
+int maximo = span[0];
+int indice = 1;
+int length = span.Length;
 
-// TODO: Implementar el algoritmo de búsqueda aquí
-// Recorremos el arreglo
-for (int i = 1; i < n; i++)
+// Procesamos de 4 en 4
+while (indice <= length - 4)
 {
-    // Usamos operador ternario
-    if (numeros[i] > maximo) maximo = numeros[i];
+    if (span[indice] > maximo) maximo = span[indice];
+    if (span[indice + 1] > maximo) maximo = span[indice + 1];
+    if (span[indice + 2] > maximo) maximo = span[indice + 2];
+    if (span[indice + 3] > maximo) maximo = span[indice + 3];
+    indice += 4;
 }
 
+while (indice < length)
+{
+    if (span[indice] > maximo) maximo = span[indice];
+    indice++;
+}
 // --- FIN DE LÓGICA DEL ALUMNO ---
 
 // 2. Salida: Lo que el Autograding comparará
